@@ -5,9 +5,15 @@ CONFIG -= qt
 
 SOURCES += \
         main.cpp \
+    retangulo.cpp \
+    figurageometrica.cpp \
     screen.cpp \
-    figurageometrica.cpp
+    circulo.cpp \
+    reta.cpp
 
 HEADERS += \
+    retangulo.h \
+    figurageometrica.h \
     screen.h \
-    figurageometrica.h
+    reta.h \
+    circulo.h

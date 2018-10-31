@@ -15,7 +15,14 @@ Screen::Screen(int _nlin, int _ncol){
 }
 
 void Screen::setPixel(int x, int y){
-    if((x>0&&x<nlin) && (y>0&&y<nlin)) mat[x][y]= brush;
+    if((x>=0 && x<nlin) && (y>=0 && y<nlin)) mat[x][y]= brush;
+}
+
+void Screen::setScreen(int nl, int nc)
+{
+    nlin = nl;
+    ncol = nc;
+    mat = vector< vector<char> >(nlin, vector<char>(ncol,' '));
 }
 
 void Screen::clear(){

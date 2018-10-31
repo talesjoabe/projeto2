@@ -1,0 +1,80 @@
+\hypertarget{main_8cpp}{}\section{Referência ao ficheiro main.\+cpp}
+\label{main_8cpp}\index{main.\+cpp@{main.\+cpp}}
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$fstream$>$}\newline
+{\ttfamily \#include \char`\"{}figurageometrica.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}screen.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}retangulo.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}reta.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}circulo.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$sstream$>$}\newline
+{\ttfamily \#include $<$list$>$}\newline
+\subsection*{Funções}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Documentação das funções}
+\mbox{\Hypertarget{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}} 
+\index{main.\+cpp@{main.\+cpp}!main@{main}}
+\index{main@{main}!main.\+cpp@{main.\+cpp}}
+\subsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}
+15 \{
+16     ifstream fin;
+17     ofstream fout;
+18     \hyperlink{class_screen}{Screen} t(50,50);
+19     \textcolor{keywordtype}{string} s;
+20     fin.open(\textcolor{stringliteral}{"/home/mneto/Documentos/Facul/Programação Avançada/Unidade II/projeto2/instrucoes.txt"});
+21     \textcolor{keywordflow}{if}(!fin.is\_open())\{
+22         cout << \textcolor{stringliteral}{"nao abriu arquivo\(\backslash\)n"};
+23     \}
+24     fout.open(\textcolor{stringliteral}{"/home/mneto/Documentos/Facul/Programação Avançada/Unidade II/projeto2/figura.txt"});
+25     list <FiguraGeometrica*>::iterator fg;
+26     list <FiguraGeometrica*> figuras;
+27     \textcolor{keywordflow}{while}(fin.good())\{
+28         getline(fin, s);
+29         \textcolor{keywordflow}{if}(fin.good())\{
+30             \textcolor{keywordtype}{string} cmd;
+31             stringstream sstream(s);
+32             sstream >> cmd;
+33             \textcolor{keywordflow}{if}(cmd.compare(\textcolor{stringliteral}{"dim"})==0)\{
+34                 \textcolor{keywordtype}{int} x, y;
+35                 sstream >> x >> y;
+36                 t.setScreen(x,y);
+37             \}
+38             \textcolor{keywordflow}{if}(cmd.compare(\textcolor{stringliteral}{"Reta"})==0)\{
+39                 \textcolor{keywordtype}{int} pxi, pyi, pxf,pyf;
+40                 \textcolor{keywordtype}{char} brush;
+41                 sstream >> pxi >>pyi >> pxf >> pyf >> brush;
+42                 figuras.push\_back(\textcolor{keyword}{new} \hyperlink{class_reta}{Reta}(pxi,pyi,pxf,pyf,brush));
+43             \}
+44             \textcolor{keywordflow}{if}(cmd.compare(\textcolor{stringliteral}{"Retangulo"})==0)\{
+45                 \textcolor{keywordtype}{int} x,y,h,l;
+46                 \textcolor{keywordtype}{int} fillmode;
+47                 \textcolor{keywordtype}{char} brush;
+48                 sstream >> x >> y >> l >> h >>fillmode >> brush;
+49                 figuras.push\_back(\textcolor{keyword}{new} \hyperlink{class_retangulo}{Retangulo}(x,y,l,h,fillmode,brush));
+50             \}
+51             \textcolor{keywordflow}{if}(cmd.compare(\textcolor{stringliteral}{"Circulo"})==0)\{
+52                 \textcolor{keywordtype}{int} x0, y0, raio;
+53                 \textcolor{keywordtype}{int} fillmode;
+54                 \textcolor{keywordtype}{char} brush;
+55                 sstream >> x0 >>y0 >> raio >> fillmode >> brush;
+56                 figuras.push\_back(\textcolor{keyword}{new} \hyperlink{class_circulo}{Circulo}(x0,y0,raio,fillmode,brush));
+57             \}
+58         \}
+59     \}
+60     \textcolor{keywordflow}{for}(fg = figuras.begin(); fg!=figuras.end(); fg++)\{
+61         (*fg)->draw(t);
+62       \}
+63     fout <<t;
+64     \textcolor{keywordflow}{return} 0;
+65 \}
+\end{DoxyCode}

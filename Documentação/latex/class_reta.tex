@@ -1,0 +1,154 @@
+\hypertarget{class_reta}{}\section{Referência à classe Reta}
+\label{class_reta}\index{Reta@{Reta}}
+
+
+{\ttfamily \#include $<$reta.\+h$>$}
+
+Diagrama de heranças da classe Reta\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_reta}
+\end{center}
+\end{figure}
+\subsection*{Membros públicos}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_reta_a5b0e120cd00f7bd931c30a62ead00d13}{Reta} (int \+\_\+pxi, int \+\_\+pyi, int \+\_\+pxf, int \+\_\+pyf, char \+\_\+brush)
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_reta}{Reta} é um construtor -\/ onde inicializa o ponto inicial e o final da reta. \end{DoxyCompactList}\item 
+void \hyperlink{class_reta_ac2e9805183cd474b62bffd8b032cd780}{draw} (\hyperlink{class_screen}{Screen} \&t)
+\begin{DoxyCompactList}\small\item\em draw é uma função que aproxima uma reta por meio do algoritmo de Bresenham. \end{DoxyCompactList}\item 
+int \hyperlink{class_reta_a0890517655f27827a827c88850f8984e}{Sinal} (int x)
+\begin{DoxyCompactList}\small\item\em Sinal é uma função auxiliar para alternar entre linhas de rasterização. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Documentação dos Construtores \& Destrutor}
+\mbox{\Hypertarget{class_reta_a5b0e120cd00f7bd931c30a62ead00d13}\label{class_reta_a5b0e120cd00f7bd931c30a62ead00d13}} 
+\index{Reta@{Reta}!Reta@{Reta}}
+\index{Reta@{Reta}!Reta@{Reta}}
+\subsubsection{\texorpdfstring{Reta()}{Reta()}}
+{\footnotesize\ttfamily Reta\+::\+Reta (\begin{DoxyParamCaption}\item[{int}]{\+\_\+pxi,  }\item[{int}]{\+\_\+pyi,  }\item[{int}]{\+\_\+pxf,  }\item[{int}]{\+\_\+pyf,  }\item[{char}]{\+\_\+brush }\end{DoxyParamCaption})}
+
+
+
+\hyperlink{class_reta}{Reta} é um construtor -\/ onde inicializa o ponto inicial e o final da reta. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em \+\_\+pxi} & é a coordenada x do ponto inicial \\
+\hline
+{\em \+\_\+pyi} & é a coordenada y do ponto inicial \\
+\hline
+{\em \+\_\+pxf} & é a coordenada x do ponto final \\
+\hline
+{\em \+\_\+pyf} & é a coordenada y do ponto final \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}
+9 \{
+10     pxi = \_pxi;
+11     pyi = \_pyi;
+12     pxf = \_pxf;
+13     pyf = \_pyf;
+14     brush = \_brush;
+15 \}
+\end{DoxyCode}
+
+
+\subsection{Documentação dos métodos}
+\mbox{\Hypertarget{class_reta_ac2e9805183cd474b62bffd8b032cd780}\label{class_reta_ac2e9805183cd474b62bffd8b032cd780}} 
+\index{Reta@{Reta}!draw@{draw}}
+\index{draw@{draw}!Reta@{Reta}}
+\subsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void Reta\+::draw (\begin{DoxyParamCaption}\item[{\hyperlink{class_screen}{Screen} \&}]{t }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+draw é uma função que aproxima uma reta por meio do algoritmo de Bresenham. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em t} & é uma variável do tipo \hyperlink{class_screen}{Screen} que recebe o desenho da reta. \\
+\hline
+\end{DoxyParams}
+
+
+Implementa \hyperlink{class_figura_geometrica_a06404670d06d28d12f5f386901186925}{Figura\+Geometrica}.
+
+
+\begin{DoxyCode}
+18 \{
+19     \textcolor{comment}{//Altera o caracter de desenho}
+20     t.\hyperlink{class_screen_aebc4eb6cb5acf15a0f04c1494622ab23}{setBrush}(brush);
+21     \textcolor{keywordtype}{int} x = pxi;
+22     \textcolor{keywordtype}{int} y = pyi;
+23     \textcolor{keywordtype}{int} Troca;
+24     \textcolor{keywordtype}{int} Delta\_x = abs(pxf - pxi);
+25     \textcolor{keywordtype}{int} Delta\_y = abs(pyf - pyi);
+26     \textcolor{keywordtype}{int} s1 = \hyperlink{class_reta_a0890517655f27827a827c88850f8984e}{Sinal}(pxf - pxi);
+27     \textcolor{keywordtype}{int} s2 = \hyperlink{class_reta_a0890517655f27827a827c88850f8984e}{Sinal}(pyf - pyi);
+28 
+29     \textcolor{keywordflow}{if}(Delta\_y > Delta\_x)\{
+30         \textcolor{keywordtype}{int} Temp = Delta\_x;
+31         Delta\_x = Delta\_y;
+32         Delta\_y = Temp;
+33         Troca = 1;
+34     \} \textcolor{keywordflow}{else}\{
+35         Troca = 0;
+36     \}
+37 
+38     \textcolor{keywordtype}{int} new\_e = 2*Delta\_y - Delta\_x;
+39     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 1; i <= Delta\_x; i++)\{
+40         t.\hyperlink{class_screen_ae6bea81c57a22d226507c3c26fa95ee0}{setPixel}(x,y);
+41         \textcolor{keywordflow}{while} (new\_e >= 0)\{
+42             \textcolor{keywordflow}{if}(Troca == 1)\{
+43                 \textcolor{comment}{//Muda para a proxima linha de rasterização}
+44                 x = x + s1;
+45             \} \textcolor{keywordflow}{else}\{
+46                 y = y + s2;
+47             \}
+48             new\_e = new\_e - 2*Delta\_x;
+49         \}
+50 
+51         \textcolor{comment}{//Permanece nesta linha de rasterização}
+52         \textcolor{keywordflow}{if}(Troca == 1)\{
+53             y = y + s2;
+54         \} \textcolor{keywordflow}{else}\{
+55             x = x + s1;
+56         \}
+57         new\_e = new\_e + 2*Delta\_y;
+58     \}
+59 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{class_reta_a0890517655f27827a827c88850f8984e}\label{class_reta_a0890517655f27827a827c88850f8984e}} 
+\index{Reta@{Reta}!Sinal@{Sinal}}
+\index{Sinal@{Sinal}!Reta@{Reta}}
+\subsubsection{\texorpdfstring{Sinal()}{Sinal()}}
+{\footnotesize\ttfamily int Reta\+::\+Sinal (\begin{DoxyParamCaption}\item[{int}]{x }\end{DoxyParamCaption})}
+
+
+
+Sinal é uma função auxiliar para alternar entre linhas de rasterização. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em x} & é o parâmetro utilizado para determinar se o retorno da função será entre -\/1, 0 e 1 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+62 \{
+63     \textcolor{keywordflow}{if}(x < 0)\{ \textcolor{keywordflow}{return} -1; \}
+64     \textcolor{keywordflow}{if}(x == 0)\{ \textcolor{keywordflow}{return} 0; \}
+65     \textcolor{keywordflow}{return} 1;
+66 \}
+\end{DoxyCode}
+
+
+A documentação para esta classe foi gerada a partir dos seguintes ficheiros\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{reta_8h}{reta.\+h}\item 
+\hyperlink{reta_8cpp}{reta.\+cpp}\end{DoxyCompactItemize}

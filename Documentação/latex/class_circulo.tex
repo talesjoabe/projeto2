@@ -1,0 +1,127 @@
+\hypertarget{class_circulo}{}\section{Referência à classe Circulo}
+\label{class_circulo}\index{Circulo@{Circulo}}
+
+
+{\ttfamily \#include $<$circulo.\+h$>$}
+
+Diagrama de heranças da classe Circulo\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_circulo}
+\end{center}
+\end{figure}
+\subsection*{Membros públicos}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_circulo_ad6da9864f1c91e281698e33aa3d18d6a}{Circulo} (int \+\_\+x0=0, int \+\_\+y0=0, int \+\_\+raio=1, int \+\_\+fillmode=1, char \+\_\+brush=\textquotesingle{} $\ast$\textquotesingle{})
+\begin{DoxyCompactList}\small\item\em circulo é um contrutor para \hyperlink{class_circulo}{Circulo} em que têm-\/se como parâmeto, o ponto no centro do circulo, raio, a opção de preencher ou não o circulo e brush. \end{DoxyCompactList}\item 
+void \hyperlink{class_circulo_a593787d6e0618c2eded23e8839e7bea6}{draw} (\hyperlink{class_screen}{Screen} \&t)
+\begin{DoxyCompactList}\small\item\em draw é a função advinda da Classe \hyperlink{class_figura_geometrica}{Figura\+Geometrica} e é implementada no intuito de desenhar sobre a tela um círculo , neste caso. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Documentação dos Construtores \& Destrutor}
+\mbox{\Hypertarget{class_circulo_ad6da9864f1c91e281698e33aa3d18d6a}\label{class_circulo_ad6da9864f1c91e281698e33aa3d18d6a}} 
+\index{Circulo@{Circulo}!Circulo@{Circulo}}
+\index{Circulo@{Circulo}!Circulo@{Circulo}}
+\subsubsection{\texorpdfstring{Circulo()}{Circulo()}}
+{\footnotesize\ttfamily Circulo\+::\+Circulo (\begin{DoxyParamCaption}\item[{int}]{\+\_\+x0 = {\ttfamily 0},  }\item[{int}]{\+\_\+y0 = {\ttfamily 0},  }\item[{int}]{\+\_\+raio = {\ttfamily 1},  }\item[{int}]{\+\_\+fillmode = {\ttfamily 1},  }\item[{char}]{\+\_\+brush = {\ttfamily \textquotesingle{}$\ast$\textquotesingle{}} }\end{DoxyParamCaption})}
+
+
+
+circulo é um contrutor para \hyperlink{class_circulo}{Circulo} em que têm-\/se como parâmeto, o ponto no centro do circulo, raio, a opção de preencher ou não o circulo e brush. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em \+\_\+x0,x} & do ponto que centraliza o circulo \\
+\hline
+{\em \+\_\+y0,y} & do ponto que centraliza o circulo \\
+\hline
+{\em \+\_\+raio} & é o raio do circulo \\
+\hline
+{\em \+\_\+fillmode} & é a variavel que define se será ou não preenchido o circulo \\
+\hline
+{\em brush} & é o pincel \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}
+4 \{
+5     x0 = \_x0;
+6     y0 = \_y0;
+7     raio = \_raio;
+8     fillmode = \_fillmode;
+9     brush = \_brush;
+10 
+11 \}
+\end{DoxyCode}
+
+
+\subsection{Documentação dos métodos}
+\mbox{\Hypertarget{class_circulo_a593787d6e0618c2eded23e8839e7bea6}\label{class_circulo_a593787d6e0618c2eded23e8839e7bea6}} 
+\index{Circulo@{Circulo}!draw@{draw}}
+\index{draw@{draw}!Circulo@{Circulo}}
+\subsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void Circulo\+::draw (\begin{DoxyParamCaption}\item[{\hyperlink{class_screen}{Screen} \&}]{t }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+draw é a função advinda da Classe \hyperlink{class_figura_geometrica}{Figura\+Geometrica} e é implementada no intuito de desenhar sobre a tela um círculo , neste caso. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em t} & \\
+\hline
+\end{DoxyParams}
+
+
+Implementa \hyperlink{class_figura_geometrica_a06404670d06d28d12f5f386901186925}{Figura\+Geometrica}.
+
+
+\begin{DoxyCode}
+13                            \{
+14     t.\hyperlink{class_screen_aebc4eb6cb5acf15a0f04c1494622ab23}{setBrush}(brush);
+15     \textcolor{keywordtype}{int} x = 0;
+16     \textcolor{keywordtype}{int} y = raio;
+17     \textcolor{keywordtype}{int} d = 1 - raio;
+18     \textcolor{keywordflow}{while}(y > x)\{
+19         \textcolor{comment}{//Desenha os pontos no 2 octante e nos octantes restantes}
+20         t.\hyperlink{class_screen_ae6bea81c57a22d226507c3c26fa95ee0}{setPixel}(x0 + x, y0 + y);
+21         t.\hyperlink{class_screen_ae6bea81c57a22d226507c3c26fa95ee0}{setPixel}(x0 + y, y0 + x);
+22         t.\hyperlink{class_screen_ae6bea81c57a22d226507c3c26fa95ee0}{setPixel}(x0 - y, y0 + x);
+23         t.\hyperlink{class_screen_ae6bea81c57a22d226507c3c26fa95ee0}{setPixel}(x0 - x, y0 + y);
+24         t.\hyperlink{class_screen_ae6bea81c57a22d226507c3c26fa95ee0}{setPixel}(x0 - x, y0 - y);
+25         t.\hyperlink{class_screen_ae6bea81c57a22d226507c3c26fa95ee0}{setPixel}(x0 - y, y0 - x);
+26         t.\hyperlink{class_screen_ae6bea81c57a22d226507c3c26fa95ee0}{setPixel}(x0 + y, y0 - x);
+27         t.\hyperlink{class_screen_ae6bea81c57a22d226507c3c26fa95ee0}{setPixel}(x0 + x, y0 - y);
+28 
+29         \textcolor{comment}{//Verifica se o circulo é preenchido e o desenha totalmente preenchido}
+30         \textcolor{keywordflow}{if}(fillmode == 1)\{
+31             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = x0 - x; i <= x0 + x; i++)
+32             \{
+33                 t.\hyperlink{class_screen_ae6bea81c57a22d226507c3c26fa95ee0}{setPixel}(i, y0 + y);
+34                 t.\hyperlink{class_screen_ae6bea81c57a22d226507c3c26fa95ee0}{setPixel}(i, y0 - y);
+35             \}
+36             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = x0 - y; i <= x0 + y; i++)
+37             \{
+38                 t.\hyperlink{class_screen_ae6bea81c57a22d226507c3c26fa95ee0}{setPixel}(i, y0 + x);
+39                 t.\hyperlink{class_screen_ae6bea81c57a22d226507c3c26fa95ee0}{setPixel}(i, y0 - x);
+40             \}
+41         \}
+42         \textcolor{keywordflow}{if}(d < 0)\{
+43             d = d + 2*x + 3;
+44             x = x + 1;
+45         \}
+46         \textcolor{keywordflow}{else}\{
+47             d = d + 2*(x-y) + 5;
+48             x = x + 1;
+49             y = y - 1;
+50         \}
+51     \}
+52 \}
+\end{DoxyCode}
+
+
+A documentação para esta classe foi gerada a partir dos seguintes ficheiros\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{circulo_8h}{circulo.\+h}\item 
+\hyperlink{circulo_8cpp}{circulo.\+cpp}\end{DoxyCompactItemize}

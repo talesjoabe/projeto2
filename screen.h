@@ -43,10 +43,18 @@ public:
   void clear();
 
   /**
+   * @brief setScreen utilizado para alterar as dimensões da tela
+   * @param nl
+   * @param nc
+   */
+  void setScreen(int nl, int nc);
+
+  /**
    * @brief setBrush é um método da classe o qual muda o caractere
    * a ser impresso na tela
    * @param _brush inicializa o novo caractere
    */
+
   void setBrush(char _brush);
 
   /**

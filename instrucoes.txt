@@ -1,0 +1,22 @@
+dim 70 70
+
+Reta 0 28 0 33 &
+Reta 1 33 2 35 &
+Reta 1 27 2 25 &
+Reta 0 13 0 18 *
+
+Reta 1 18 2 20 *
+Reta 1 12 2 10 *
+
+
+Circulo 8 15 5 0 #
+Circulo 9 16 2 1 #
+Retangulo 15 15 4 15 0 $
+
+Circulo 8 30 5 0 %
+
+Circulo 9 31 2 1 %
+Reta 17 16 17 29 *
+Reta 16 16 16 29 *
+
+Circulo 20 35 7 1 ^

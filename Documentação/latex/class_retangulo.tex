@@ -1,0 +1,105 @@
+\hypertarget{class_retangulo}{}\section{Referência à classe Retangulo}
+\label{class_retangulo}\index{Retangulo@{Retangulo}}
+
+
+{\ttfamily \#include $<$retangulo.\+h$>$}
+
+Diagrama de heranças da classe Retangulo\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_retangulo}
+\end{center}
+\end{figure}
+\subsection*{Membros públicos}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_retangulo_a93eeef9b155c5bb9f19d3c8d4013b43c}{Retangulo} (int \+\_\+x=0, int \+\_\+y=0, int \+\_\+l=0, int \+\_\+h=0, int \+\_\+fillmode=1, char \+\_\+brush=\textquotesingle{} $\ast$\textquotesingle{})
+\begin{DoxyCompactList}\small\item\em Construtor do retângulo, onde recebe as coordenadas do ponto superior esquerdo e inicializa as variaveis privadas com os valores armazenados. \end{DoxyCompactList}\item 
+void \hyperlink{class_retangulo_ac088dd6d3f4f3d3f80363a868c2e74f1}{draw} (\hyperlink{class_screen}{Screen} \&t)
+\begin{DoxyCompactList}\small\item\em draw é um método do tipo virtual; e, se todos os métodos da classe forem virtual, então pode-\/se dizer que a classe é abstrata pura. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Documentação dos Construtores \& Destrutor}
+\mbox{\Hypertarget{class_retangulo_a93eeef9b155c5bb9f19d3c8d4013b43c}\label{class_retangulo_a93eeef9b155c5bb9f19d3c8d4013b43c}} 
+\index{Retangulo@{Retangulo}!Retangulo@{Retangulo}}
+\index{Retangulo@{Retangulo}!Retangulo@{Retangulo}}
+\subsubsection{\texorpdfstring{Retangulo()}{Retangulo()}}
+{\footnotesize\ttfamily Retangulo\+::\+Retangulo (\begin{DoxyParamCaption}\item[{int}]{\+\_\+x = {\ttfamily 0},  }\item[{int}]{\+\_\+y = {\ttfamily 0},  }\item[{int}]{\+\_\+l = {\ttfamily 0},  }\item[{int}]{\+\_\+h = {\ttfamily 0},  }\item[{int}]{\+\_\+fillmode = {\ttfamily 1},  }\item[{char}]{\+\_\+brush = {\ttfamily \textquotesingle{}$\ast$\textquotesingle{}} }\end{DoxyParamCaption})}
+
+
+
+Construtor do retângulo, onde recebe as coordenadas do ponto superior esquerdo e inicializa as variaveis privadas com os valores armazenados. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em \+\_\+x} & é a coordenada x do ponto superior esquerdo \\
+\hline
+{\em \+\_\+y} & é a coordenada y do ponto superior esquerdo \\
+\hline
+{\em \+\_\+l} & é a largura do retangulo \\
+\hline
+{\em \+\_\+h} & é a altura do retangulo \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}
+4                                                                               \{
+5     x= \_x;
+6     y= \_y;
+7     l= \_l;
+8     h= \_h;
+9     fillmode=\_fillmode;
+10     brush=\_brush;
+11 \}
+\end{DoxyCode}
+
+
+\subsection{Documentação dos métodos}
+\mbox{\Hypertarget{class_retangulo_ac088dd6d3f4f3d3f80363a868c2e74f1}\label{class_retangulo_ac088dd6d3f4f3d3f80363a868c2e74f1}} 
+\index{Retangulo@{Retangulo}!draw@{draw}}
+\index{draw@{draw}!Retangulo@{Retangulo}}
+\subsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void Retangulo\+::draw (\begin{DoxyParamCaption}\item[{\hyperlink{class_screen}{Screen} \&}]{t }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+draw é um método do tipo virtual; e, se todos os métodos da classe forem virtual, então pode-\/se dizer que a classe é abstrata pura. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em t} & \\
+\hline
+\end{DoxyParams}
+
+
+Implementa \hyperlink{class_figura_geometrica_a06404670d06d28d12f5f386901186925}{Figura\+Geometrica}.
+
+
+\begin{DoxyCode}
+13                              \{
+14     t.\hyperlink{class_screen_aebc4eb6cb5acf15a0f04c1494622ab23}{setBrush}(brush);
+15 
+16     \textcolor{keywordflow}{if}(fillmode>0)\{
+17         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i=x; i<(x+l);i++)\{
+18             \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} j=y;j<(y+h);j++)\{
+19                 t.\hyperlink{class_screen_ae6bea81c57a22d226507c3c26fa95ee0}{setPixel}(i,j);
+20             \}
+21         \}
+22     \}
+23     \textcolor{keywordflow}{else}\{
+24         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i=x; i<(x+l);i++)\{
+25             \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} j=y;j<(y+h);j++)\{
+26                 \textcolor{keywordflow}{if}(((i == x || i==x+l-1) || (j ==y || j==y+h-1)))\{
+27                 t.\hyperlink{class_screen_ae6bea81c57a22d226507c3c26fa95ee0}{setPixel}(i,j);
+28                 \}
+29             \}
+30         \}
+31     \}
+32 \}
+\end{DoxyCode}
+
+
+A documentação para esta classe foi gerada a partir dos seguintes ficheiros\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{retangulo_8h}{retangulo.\+h}\item 
+\hyperlink{retangulo_8cpp}{retangulo.\+cpp}\end{DoxyCompactItemize}

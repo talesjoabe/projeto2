@@ -1,0 +1,43 @@
+\hypertarget{screen_8cpp}{}\section{Referência ao ficheiro screen.\+cpp}
+\label{screen_8cpp}\index{screen.\+cpp@{screen.\+cpp}}
+{\ttfamily \#include \char`\"{}screen.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$ostream$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+\subsection*{Funções}
+\begin{DoxyCompactItemize}
+\item 
+ostream \& \hyperlink{screen_8cpp_aab6a2880746bfe1b7964817cc8f0989e}{operator$<$$<$} (ostream \&os, \hyperlink{class_screen}{Screen} \&t)
+\end{DoxyCompactItemize}
+
+
+\subsection{Documentação das funções}
+\mbox{\Hypertarget{screen_8cpp_aab6a2880746bfe1b7964817cc8f0989e}\label{screen_8cpp_aab6a2880746bfe1b7964817cc8f0989e}} 
+\index{screen.\+cpp@{screen.\+cpp}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!screen.\+cpp@{screen.\+cpp}}
+\subsubsection{\texorpdfstring{operator$<$$<$()}{operator<<()}}
+{\footnotesize\ttfamily ostream\& operator$<$$<$ (\begin{DoxyParamCaption}\item[{ostream \&}]{os,  }\item[{\hyperlink{class_screen}{Screen} \&}]{t }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em os} & \\
+\hline
+{\em t} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+40                                            \{
+41     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i=0;i<t.nlin;i++)\{
+42         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} j=0; j<t.ncol; j++)\{
+43             os<< t.mat[j][i] <<\textcolor{stringliteral}{" "};
+44         \}
+45         os<<endl;
+46     \}
+47 
+48     \textcolor{keywordflow}{return} os;
+49 \}
+\end{DoxyCode}

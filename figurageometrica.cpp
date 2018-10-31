@@ -3,5 +3,8 @@
 
 FiguraGeometrica::FiguraGeometrica()
 {
+}
+
+void FiguraGeometrica::draw(Screen& t) {
 
 }
